@@ -1,6 +1,8 @@
 /*
  * Implementation of KWIC using "Data abstraction 
  * and Object-Oriented Organisation" design style
+ * Implemented by: Rupali Roy Choudhury
+ * Matric num: A0102796B
  */
 
 import java.util.*;
@@ -8,43 +10,47 @@ import java.util.ArrayList;
 
 public class KWIC 
 {
-	String [] sentence;
-	ArrayList<String> possibleShifts = new ArrayList<String>();
-	//String []appendedWords = new String[10];
-	ArrayList<String> appendedWords = new ArrayList<String>();
+	ArrayList<String> appendedListOfSentences = new ArrayList<String>();
 	String [] wordsToIgnore;
+	String [] sentence;
 	String [] words;
-	String msg;
-	int index = 0;
+	String joinedWords;
 	
+	/*************************************************************
+	assign the arrays with the individual words separated by ","
+	**************************************************************/
 	KWIC(String sentences, String ignoreWords)
 	{
 		sentence = sentences.split(", ");
 		wordsToIgnore = ignoreWords.split(", ");
 	}
 	
+	/*************************************************************************************************
+	appends those sentences in the array whose first word is not in the list of "words to be ignored"
+	**************************************************************************************************/
 	public void append(String words[])
 	{
-		int i = 0, flag = 0;
+		int i = 0, flag = 0; 									// when flag is 0 means the first word of the sentence does not start with "words to be ignored"
 		for(i = 0; i < wordsToIgnore.length; i++)
 		{
 			if(words[0].equalsIgnoreCase(wordsToIgnore[i]))
 			{
 				flag ++;
 				break;
-			}
-			
+			}			
 		}
-		if(flag == 0)
+		if(flag == 0)  
 		{
-			msg = String.join(" ", words);
-			appendedWords.add(msg);
-			Collections.sort(appendedWords,String.CASE_INSENSITIVE_ORDER);
-			System.out.println(appendedWords);
+			joinedWords = String.join(" ", words);     			// assembles the individual words to a sentence separated by a space
+			appendedListOfSentences.add(joinedWords);  			// appends the sentences to the given array
+			sortInAlphabeticOrder();
 		}
 	}
 	
-	public void splitIndex(String str)
+	/*****************************************************************************************
+	splits the sentences in the array index by a space and does a circular shift of the words
+	******************************************************************************************/
+	public void splitAndCircularShiftIndex(String str)
 	{
 		int i, k;
 		words = str.split(" ");
@@ -63,42 +69,38 @@ public class KWIC
 		}
 	}
 	
-	public void circularShift()
+	/****************************************************
+	 each array index is sent for manipulation
+	 ****************************************************/
+	public void logic()
 	{
 		int i;
 		for(i = 0; i < sentence.length; i++)
 		{
-			splitIndex(sentence[i]);
+			splitAndCircularShiftIndex(sentence[i]);
 		}
 	}
 	
-	/*public void sort()
+	/**************************************************
+	sorts the array according to alphabetical order
+	***************************************************/
+	public void sortInAlphabeticOrder()
 	{
-		int i, j;
-		String temp;
-		for(i = 0; i < sentence.length; i++)
-		{
-			for(j = i+1; j < sentence.length; j++)
-			{
-				if(sentence[i].compareToIgnoreCase(sentence[j]) > 0)
-				{
-					temp = sentence[i];
-					sentence[i] = sentence[j];
-					sentence[j] = temp;
-				}
-			}
-		}
+		Collections.sort(appendedListOfSentences,String.CASE_INSENSITIVE_ORDER);
 	}
 	
+	/***********************************
+	displays the content of the array
+	************************************/
 	public void print()
 	{
-		int i = 0, j = 0;
-		while(j < sentence.length)
+		int j = 0;
+		while(j < appendedListOfSentences.size())
 		{
-			System.out.println(sentence[j]);
+			System.out.println(appendedListOfSentences.get(j));
 			j++;
 		}
-	}*/
+	}
 
 	public static void main(String[] args) 
 	{
@@ -112,9 +114,7 @@ public class KWIC
 		ignoreWords = scanner.nextLine();
 		
 		KWIC k = new KWIC(sentences,ignoreWords);
-		k.circularShift();
-		//k.sort();
-       // k.print();
+		k.logic();
+        k.print();
 	}
-
 }
