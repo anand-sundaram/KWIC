@@ -3,6 +3,7 @@ package shared;
 import java.util.StringTokenizer;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Scanner;
 
 public class MasterControl {
 
@@ -17,13 +18,21 @@ public class MasterControl {
 	
 	public static ArrayList<String> outputTitles = new ArrayList<String>();
 	
-	public static void main(String[] args) {
-		MasterControl.wordsToIgnore.addAll(Arrays.asList(wordsToIgnoreList));
-		MasterControl.titles.addAll(Arrays.asList(titlesList));
+//	public static void main(String[] args) {
+//		MasterControl.wordsToIgnore.addAll(Arrays.asList(wordsToIgnoreList));
+//		MasterControl.titles.addAll(Arrays.asList(titlesList));
+//		
+//		MasterControl.circularShifter();
+//		MasterControl.alphabetizer();
+//		MasterControl.output();
+//	}
+	
+	static void splitter(String sentences, String ignoreWords) {
+		String[] sentence = sentences.split(", |,");
+		String[] wordsToIgnore = ignoreWords.split(", |,");
 		
-		MasterControl.circularShifter();
-		MasterControl.alphabetizer();
-		MasterControl.output();
+		MasterControl.wordsToIgnore.addAll(Arrays.asList(wordsToIgnore));
+		MasterControl.titles.addAll(Arrays.asList(sentence));
 	}
 	static void circularShifter() {
 		index = new ArrayList<ArrayList<Integer>>();

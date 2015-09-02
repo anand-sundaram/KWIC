@@ -5,6 +5,8 @@
  * Matric num: A0102796B
  */
 
+package shared; 
+
 import java.util.*;
 import java.util.ArrayList;
 
@@ -21,8 +23,8 @@ public class KWIC
 	**************************************************************/
 	KWIC(String sentences, String ignoreWords)
 	{
-		sentence = sentences.split(", ");
-		wordsToIgnore = ignoreWords.split(", ");
+		sentence = sentences.split(", |,");
+		wordsToIgnore = ignoreWords.split(", |,");
 	}
 	
 	/*************************************************************************************************
@@ -102,19 +104,19 @@ public class KWIC
 		}
 	}
 
-	public static void main(String[] args) 
-	{
-		Scanner scanner = new Scanner(System.in);
-		String sentences;
-		String ignoreWords;
-		
-		System.out.println("Enter list of sentences:");
-		sentences = scanner.nextLine();
-		System.out.println("Enter list of words to ignore:");
-		ignoreWords = scanner.nextLine();
-		
-		KWIC k = new KWIC(sentences,ignoreWords);
-		k.logic();
-        k.print();
-	}
+//	public static void main(String[] args) 
+//	{
+//		Scanner scanner = new Scanner(System.in);
+//		String sentences;
+//		String ignoreWords;
+//		
+//		System.out.println("Enter list of sentences:");
+//		sentences = scanner.nextLine();
+//		System.out.println("Enter list of words to ignore:");
+//		ignoreWords = scanner.nextLine();
+//		
+//		KWIC k = new KWIC(sentences,ignoreWords);
+//		k.logic();
+//        k.print();
+//	}
 }
