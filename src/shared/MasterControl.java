@@ -28,8 +28,8 @@ public class MasterControl {
 //	}
 	
 	static void splitter(String sentences, String ignoreWords) {
-		String[] sentence = sentences.split(", |,");
-		String[] wordsToIgnore = ignoreWords.split(", |,");
+		String[] sentence = sentences.toLowerCase().split(", |,");
+		String[] wordsToIgnore = ignoreWords.toLowerCase().split(", |,");
 		
 		MasterControl.wordsToIgnore.addAll(Arrays.asList(wordsToIgnore));
 		MasterControl.titles.addAll(Arrays.asList(sentence));
