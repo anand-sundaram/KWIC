@@ -1,3 +1,9 @@
+/*
+ * Implementation of KWIC using "Shared repository" design style
+ * Implemented by: Anand Sundaram
+ * Matric num: A0118897J
+ */
+
 package shared;
 
 import java.util.StringTokenizer;
@@ -17,15 +23,6 @@ public class MasterControl {
 	public static ArrayList<ArrayList<Integer>> alphabetizedIndex;
 	
 	public static ArrayList<String> outputTitles = new ArrayList<String>();
-	
-//	public static void main(String[] args) {
-//		MasterControl.wordsToIgnore.addAll(Arrays.asList(wordsToIgnoreList));
-//		MasterControl.titles.addAll(Arrays.asList(titlesList));
-//		
-//		MasterControl.circularShifter();
-//		MasterControl.alphabetizer();
-//		MasterControl.output();
-//	}
 	
 	static void splitter(String sentences, String ignoreWords) {
 		String[] sentence = sentences.toLowerCase().split(", |,");

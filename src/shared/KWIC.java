@@ -32,9 +32,9 @@ public class KWIC
 	**************************************************************************************************/
 	public void append(String words[])
 	{
-		int i = 0, flag = 0; 									// when flag is 0 means the first word of the sentence does not start with "words to be ignored"
+		int i = 0, flag = 0; 	// when flag is 0 means the first word of the sentence does not start with "words to be ignored"
 		for(i = 0; i < wordsToIgnore.length; i++)
-		{
+		{		
 			if(words[0].equalsIgnoreCase(wordsToIgnore[i]))
 			{
 				flag ++;
@@ -43,8 +43,10 @@ public class KWIC
 		}
 		if(flag == 0)  
 		{
+			words[0] = words[0].toUpperCase();
 			joinedWords = String.join(" ", words);     			// assembles the individual words to a sentence separated by a space
 			appendedListOfSentences.add(joinedWords);  			// appends the sentences to the given array
+			words[0] = words[0].toLowerCase();
 			sortInAlphabeticOrder();
 		}
 	}
@@ -103,20 +105,4 @@ public class KWIC
 			j++;
 		}
 	}
-
-//	public static void main(String[] args) 
-//	{
-//		Scanner scanner = new Scanner(System.in);
-//		String sentences;
-//		String ignoreWords;
-//		
-//		System.out.println("Enter list of sentences:");
-//		sentences = scanner.nextLine();
-//		System.out.println("Enter list of words to ignore:");
-//		ignoreWords = scanner.nextLine();
-//		
-//		KWIC k = new KWIC(sentences,ignoreWords);
-//		k.logic();
-//        k.print();
-//	}
 }
