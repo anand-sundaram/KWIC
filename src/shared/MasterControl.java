@@ -15,9 +15,6 @@ public class MasterControl {
 
 	public static ArrayList<String> wordsToIgnore = new ArrayList<String>();
 	public static ArrayList<String> titles = new ArrayList<String>();
-	public static String[] wordsToIgnoreList = {"is", "the", "of", "and", "as", "a", "after"};
-	
-	public static String[] titlesList = {"the day after tomorrow", "fast and furious", "man of steel"};
 	public static ArrayList<ArrayList<String>> titlesByWords;
 	public static ArrayList<ArrayList<Integer>> index;
 	public static ArrayList<ArrayList<Integer>> alphabetizedIndex;
