@@ -30,7 +30,7 @@ public class KWIC
 	/*************************************************************************************************
 	appends those sentences in the array whose first word is not in the list of "words to be ignored"
 	**************************************************************************************************/
-	public void append(String words[])
+	private void append(String words[])
 	{
 		int i = 0, flag = 0; 	// when flag is 0 means the first word of the sentence does not start with "words to be ignored"
 		for(i = 0; i < wordsToIgnore.length; i++)
@@ -54,7 +54,7 @@ public class KWIC
 	/*****************************************************************************************
 	splits the sentences in the array index by a space and does a circular shift of the words
 	******************************************************************************************/
-	public void splitAndCircularShiftIndex(String str)
+	private void splitAndCircularShiftIndex(String str)
 	{
 		int i, k;
 		words = str.split(" ");
@@ -88,7 +88,7 @@ public class KWIC
 	/**************************************************
 	sorts the array according to alphabetical order
 	***************************************************/
-	public void sortInAlphabeticOrder()
+	private void sortInAlphabeticOrder()
 	{
 		Collections.sort(appendedListOfSentences,String.CASE_INSENSITIVE_ORDER);
 	}
